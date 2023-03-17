@@ -1,18 +1,41 @@
-import AnotherFact from '@/components/AnotherFact';
-import Fact from '@/components/Fact';
 import RecoilWrapper from '@/components/RecoilWrapper';
+import Sidebar from '@/components/Sidebar';
+import Steps from '@/components/Steps';
 import { Suspense } from 'react';
+import styles from '../page.module.css';
+
+export interface Step {
+  title: string;
+  id: number;
+}
+
+const getZap = async (): Promise<{ steps: Step[] }> => {
+  return new Promise(resolve => {
+    setTimeout(
+      () =>
+        resolve({
+          steps: [
+            { title: 'First Step', id: 1 },
+            { title: 'Second Step', id: 2 },
+          ],
+        }),
+      1000
+    );
+  });
+};
 
 const Page = async () => {
+  const zap = await getZap();
   return (
     <div>
-      Hello from server components
-      <RecoilWrapper>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Fact />
-        </Suspense>
+      <RecoilWrapper zap={zap.steps}>
+        <div className={styles.main}>
+          <Steps />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Sidebar />
+          </Suspense>
+        </div>
       </RecoilWrapper>
-      <AnotherFact />
     </div>
   );
 };
