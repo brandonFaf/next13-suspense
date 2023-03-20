@@ -11,8 +11,6 @@ There were two things that we learned:
 1. Client Components (those using 'use client') can be rendered server side
 2. Client Components can't be async components but can use async functions (like normal components) but Server Components (those without 'use client') can be async components .
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Instructions to run
 
 First, run the development server:
