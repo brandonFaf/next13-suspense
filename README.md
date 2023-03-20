@@ -8,8 +8,8 @@ rendered in the components using useRecoilValue. There is a timeout used to simu
 
 There were two things that we learned:
 
-1. Client Components (those using 'use client') can be rendered server side
-2. Client Components can't be async components but can use async functions (like normal components) but Server Components (those without 'use client') can be async components .
+1. Server Components !== Server Side Rendering. This means Client Components (those using 'use client') can be rendered server side
+2. Client Components can't be async components but can use async functions (like normal components) but Server Components (those without 'use client') can be async components and can await async calls. This allows for data calls to be made similar to how `getServerSideProps` is called to load data.
 
 ## Instructions to run
 
