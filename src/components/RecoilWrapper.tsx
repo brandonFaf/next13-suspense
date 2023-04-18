@@ -1,5 +1,6 @@
 'use client';
-import { Step } from '@/app/hello/page';
+
+import { Step } from '@/state/types';
 import zapState from '@/state/zapState';
 import { RecoilRoot } from 'recoil';
 

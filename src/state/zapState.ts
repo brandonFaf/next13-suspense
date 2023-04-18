@@ -1,5 +1,5 @@
-import { Step } from '@/app/hello/page';
 import { atom } from 'recoil';
+import { Step } from './types';
 
 const zapState = atom<Step[]>({
   key: 'zapState',

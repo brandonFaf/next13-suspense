@@ -1,13 +1,9 @@
 import RecoilWrapper from '@/components/RecoilWrapper';
 import Sidebar from '@/components/Sidebar';
 import Steps from '@/components/Steps';
+import { Step } from '@/state/types';
 import { Suspense } from 'react';
 import styles from '../page.module.css';
-
-export interface Step {
-  title: string;
-  id: number;
-}
 
 const getZap = async (): Promise<{ steps: Step[] }> => {
   return new Promise(resolve => {
