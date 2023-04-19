@@ -1,14 +1,22 @@
 import { selector, selectorFamily } from 'recoil';
 
-const callApi = async (id: number): Promise<string> => {
+export const callApi = async (id: number): Promise<string> => {
   return new Promise(resolve => {
-    setTimeout(() => resolve(id % 2 == 0 ? '✅' : '⚠️'), 1000);
+    setTimeout(() => {
+      console.log('resolving');
+      if (typeof window === 'undefined') {
+        resolve('server');
+      } else {
+        resolve(id % 2 == 0 ? '✅' : '⚠️');
+      }
+    }, 6000);
   });
 };
 
 export const statusState = selectorFamily<string, number>({
   key: 'statusState',
   get: id => async () => {
+    console.log('calling api');
     const status = await callApi(id);
     return status;
   },

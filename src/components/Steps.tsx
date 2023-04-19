@@ -1,7 +1,7 @@
 'use client';
-import { statusState } from '@/state/statusState';
+import { callApi, statusState } from '@/state/statusState';
 import zapState from '@/state/zapState';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 const stepStyle = {
@@ -34,6 +34,7 @@ const Steps = () => {
   );
 };
 const Status = ({ id }: { id: number }) => {
+  console.log('rendering and getting status');
   const status = useRecoilValue(statusState(id));
   return <div>{status}</div>;
 };
