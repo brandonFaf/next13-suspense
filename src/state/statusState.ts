@@ -8,16 +8,16 @@ const callApi = async (id: number): Promise<string> => {
 
 export const statusState = selectorFamily<string, number>({
   key: 'statusState',
-  get: id => async () => {
-    const status = await callApi(id);
+  get: id => () => {
+    const status = id % 2 == 0 ? '✅' : '⚠️';
     return status;
   },
 });
 
 export const zapStatusState = selector<string>({
   key: 'statusState',
-  get: async () => {
-    const status = await callApi(1);
+  get: () => {
+    const status = '⚠️';
     return status;
   },
 });
