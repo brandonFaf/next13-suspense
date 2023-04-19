@@ -5,6 +5,8 @@ import { Step } from '@/state/types';
 import { Suspense } from 'react';
 import styles from '../../page.module.css';
 
+export const dynamic = 'force-dynamic';
+
 const getZap = async (): Promise<{ steps: Step[] }> => {
   return new Promise(resolve => {
     setTimeout(
