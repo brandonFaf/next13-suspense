@@ -9,7 +9,7 @@ export const callApi = async (id: number): Promise<string> => {
       } else {
         resolve(id % 2 == 0 ? '✅' : '⚠️');
       }
-    }, 6000);
+    }, 2000);
   });
 };
 
