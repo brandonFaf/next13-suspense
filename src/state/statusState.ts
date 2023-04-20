@@ -4,11 +4,8 @@ export const callApi = async (id: number): Promise<string> => {
   return new Promise(resolve => {
     setTimeout(() => {
       console.log('resolving');
-      if (typeof window === 'undefined') {
-        resolve('server');
-      } else {
-        resolve(id % 2 == 0 ? '✅' : '⚠️');
-      }
+
+      resolve(id % 2 == 0 ? '✅' : '⚠️');
     }, 2000);
   });
 };
