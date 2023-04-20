@@ -1,9 +1,10 @@
-'use client';
-import { callApi } from '@/state/statusState';
-import React, { Suspense, useEffect, useState } from 'react';
-import Sidebar from './Sidebar';
-import Steps from './Steps';
-import Albums from './Albums';
+"use client";
+
+import { callApi } from "@/state/statusState";
+import React, { Suspense, useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import Steps from "./Steps";
+import Albums from "./Albums";
 
 const EditorContainer = () => {
   //   const [counter, setCounter] = useState(0);
@@ -17,7 +18,7 @@ const EditorContainer = () => {
     <div>
       <APITester />
       <Suspense fallback={<div>Loading ALbums...</div>}>
-        <Albums artistId={'the-beatles'} />
+        <Albums artistId={"the-beatles"} />
       </Suspense>
       <Steps />
       <Suspense fallback={<div>Loading...</div>}>
@@ -29,12 +30,12 @@ const EditorContainer = () => {
 
 export default EditorContainer;
 export const APITester = () => {
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
   useEffect(() => {
     const callCallApi = async (id: number) => {
-      console.log('callCallApi');
+      console.log("callCallApi");
       const status = await callApi(id);
-      console.log('status:', status, id);
+      console.log("status:", status, id);
       setStatus(status);
     };
     callCallApi(Math.floor(Math.random() * 100));
