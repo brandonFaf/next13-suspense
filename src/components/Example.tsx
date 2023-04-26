@@ -1,65 +1,40 @@
 'use client';
 
 import { Suspense } from 'react';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { RecoilRoot, atom, selector, useRecoilValue } from 'recoil';
 
-import React from 'react';
-
-export const Data = ({ id }) => {
+export const Data = () => {
   const data = useRecoilValue(dataState);
-  const [userData, setUserData] = useRecoilState(userState);
-  const handleClick = () => {
-    console.log('click');
-    setUserData({
-      id,
-    });
-  };
+
   return (
     <div>
-      <button onClick={handleClick}>set User id</button>
       <div>id is set to: {data}</div>
     </div>
   );
 };
 
-export const Example = ({ id }) => {
+const Example = () => {
   return (
-    <RecoilRoot
-      initializeState={snapshot => {
-        console.log('initializing state');
-        snapshot.set(userState, { id });
-      }}
-    >
+    <RecoilRoot>
       <Suspense fallback={<div>loading data from recoil…</div>}>
-        <Data id={id} />
+        <Data />
       </Suspense>
     </RecoilRoot>
   );
 };
 
-const userState = atom({
-  key: 'userState',
-  default: {},
-});
-
 const dataState = selector<string>({
   key: 'dataState',
-  get: async ({ get }) => {
+  get: async () => {
     console.log('running selector: waiting on promise');
-    const id = get(userState);
-    const res = await new Promise<void>(resolve => {
+    await new Promise<void>(resolve => {
       setTimeout(() => {
-        console.log('resolving:', id.id);
-        resolve(id.id);
+        resolve();
       }, 2000);
     });
+    console.log('resolving');
 
-    return res;
+    return '2';
   },
 });
+export default Example;

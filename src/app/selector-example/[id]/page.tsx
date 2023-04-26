@@ -1,4 +1,4 @@
-import { Example } from '@/components/Example';
+import Example from '@/components/Example';
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
@@ -6,7 +6,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div>
-      <Example id={id} />
+      <Example />
     </div>
   );
 };
